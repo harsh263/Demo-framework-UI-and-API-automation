@@ -10,19 +10,57 @@
 	    <artifactId>testng</artifactId>
 	    <version>7.8.0</version>
 	</dependency>
+	<dependency>
+	    <groupId>io.cucumber</groupId>
+	    <artifactId>cucumber-java</artifactId>
+	    <version>5.6.0</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
+	<dependency>
+	    <groupId>io.cucumber</groupId>
+	    <artifactId>cucumber-junit</artifactId>
+	    <version>5.6.0</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-api</artifactId>
+	    <version>5.10.1</version>
+	    <scope>test</scope>
+	</dependency>
+	   <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
+	<dependency>
+	    <groupId>org.junit.jupiter</groupId>
+	    <artifactId>junit-jupiter-engine</artifactId>
+	    <version>5.10.1</version>
+	    <scope>test</scope>
+	</dependency>
+    <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-runner -->
+    <dependency>
+        <groupId>org.junit.platform</groupId>
+        <artifactId>junit-platform-runner</artifactId>
+        <version>1.10.1</version>
+        <scope>test</scope>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher -->
+    <dependency>
+        <groupId>org.junit.platform</groupId>
+        <artifactId>junit-platform-launcher</artifactId>
+        <version>1.10.1</version>
+        <scope>test</scope>
+    </dependency>
   </dependencies>
-  <build>
-  <plugins>
-  <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>3.1.2</version>
+ <build>
+	<plugins>
+  		<plugin>
+        	<groupId>org.apache.maven.plugins</groupId>
+        	<artifactId>maven-surefire-plugin</artifactId>
+        	<version>3.1.2</version>
         <configuration>
-          <suiteXmlFiles>
-            <suiteXmlFile>src/test/java/TestNG.xml</suiteXmlFile>
-          </suiteXmlFiles>
+        	<suiteXmlFiles>
+            	<suiteXmlFile>src/test/java/TestNG.xml</suiteXmlFile>
+          	</suiteXmlFiles>
         </configuration>
-      </plugin>
-    </plugins>
+    	</plugin>
+	</plugins>
   </build>
 </project>
