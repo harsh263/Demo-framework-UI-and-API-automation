@@ -1,14 +1,41 @@
 package com.testutils;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
 public class WebDriverManager {
 	
-	public void get_webdriver_object() {
+	private PropertiesFileHandle properties_file_handle;
+	private WebDriver driver;
+	
+	public WebDriverManager() {
+		properties_file_handle = new PropertiesFileHandle(Constants.CONFIG_FILE_PATH);
+	}
+	
+	public WebDriver get_webdriver_object() {
 		
-		System.out.println("This method will return webdriver object on request.");
+		if(null == driver) {
+			String browser = properties_file_handle.get_property("browser");
+			switch (browser) {
+			case "chrome":
+				driver = new ChromeDriver();
+				break;
+			case "firefox":
+				driver = new FirefoxDriver();
+			case "edge":
+				driver = new EdgeDriver();
+			default:
+				driver = new ChromeDriver();
+				break;
+			}
+		}
+		return driver;
 	}
 	
 	public void clean_up() {
-		System.out.println("This method will kill webdriver object.");
+		driver.quit();
 	}
 
 }
