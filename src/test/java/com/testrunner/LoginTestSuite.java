@@ -6,7 +6,6 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 import com.testcases.TestLoginSuccess;
-import com.testcases.TestLoginUnsuccessful;
 
 
 //@RunWith(JUnitPlatform.class)

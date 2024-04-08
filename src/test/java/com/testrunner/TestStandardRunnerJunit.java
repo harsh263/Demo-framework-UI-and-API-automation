@@ -5,14 +5,12 @@ import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
 import com.testcases.TestLoginSuccess;
-import com.testcases.TestLoginUnsuccessful;
-
 public class TestStandardRunnerJunit {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Result result = JUnitCore.runClasses(TestLoginSuccess.class, TestLoginUnsuccessful.class);
+		Result result = JUnitCore.runClasses(TestLoginSuccess.class);
 		System.out.println("Total number of tests " + result.getRunCount());
 		System.out.println("Total number of tests failed " + result.getFailureCount());
 		

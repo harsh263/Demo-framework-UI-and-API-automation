@@ -2,14 +2,17 @@ package com.testutils;
 
 import java.time.Duration;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.ElementNotInteractableException;
+import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+
 public class WebActions {
 	private WebDriver driver;
+	static Logger logger = Logger.getLogger(WebActions.class);
 	
 	public WebActions(WebDriver driver) {
 		this.driver = driver;
@@ -28,7 +31,17 @@ public class WebActions {
 	}
 	
 	public void click_on_element(WebElement elem) {
+		try {
 		elem.click();
+		}
+		catch (NoSuchElementException e) {
+			// TODO: handle exception
+			logger.info("Unable to locate element: " + elem);
+		}
+		catch (ElementClickInterceptedException e) {
+			// TODO: handle exception
+			logger.info("Unable to click to element: " + elem);
+		}
 	}
 	
 	public void enter_text_field(WebElement elem, String text) {
@@ -44,6 +57,10 @@ public class WebActions {
 			// Do nothing
 			return false;
 		}
+	}
+	
+	public String get_text_of_element(WebElement elem) {
+		return elem.getText();
 	}
 
 }

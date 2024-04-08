@@ -2,6 +2,7 @@ package com.testutils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -18,9 +19,14 @@ public class WebDriverManager {
 		
 		if(null == driver) {
 			String browser = properties_file_handle.get_property("browser");
+			boolean headless = Boolean.parseBoolean(properties_file_handle.get_property("headless"));
 			switch (browser) {
 			case "chrome":
-				driver = new ChromeDriver();
+				ChromeOptions option = new ChromeOptions();
+				if (headless) {
+					option.addArguments("--headless");
+				}
+				driver = new ChromeDriver(option);
 				break;
 			case "firefox":
 				driver = new FirefoxDriver();

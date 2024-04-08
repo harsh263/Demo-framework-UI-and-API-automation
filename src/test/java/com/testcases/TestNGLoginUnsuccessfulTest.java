@@ -15,6 +15,8 @@ public class TestNGLoginUnsuccessfulTest {
   @Test(dataProvider = "dp")
   public void testloginunsuccessful(Integer n, String s) {
 	  System.out.println("This is test case of Unsuccessful login TestNG...");
+	  System.out.println("Integer value is " + n);
+	  System.out.println("String value is " + s);
   }
   @BeforeMethod
   public void beforeMethod() {
