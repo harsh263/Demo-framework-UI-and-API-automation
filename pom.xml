@@ -1,81 +1,201 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>demo-framework</groupId>
-  <artifactId>demo</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <groupId>com.automation</groupId>
+  <artifactId>hybrid-automation-framework</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <name>Hybrid Test Automation Framework</name>
+  <description>Scalable automation framework for Web, API, Mobile and Windows testing</description>
+
+  <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <selenium.version>4.16.1</selenium.version>
+    <cucumber.version>7.15.0</cucumber.version>
+    <testng.version>7.8.0</testng.version>
+    <rest-assured.version>5.4.0</rest-assured.version>
+    <extentreports.version>5.1.1</extentreports.version>
+    <allure.version>2.25.0</allure.version>
+    <log4j.version>2.22.1</log4j.version>
+  </properties>
+
   <dependencies>
-  <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
-	<dependency>
-	    <groupId>io.cucumber</groupId>
-	    <artifactId>cucumber-java</artifactId>
-	    <version>5.6.0</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-junit -->
-	<dependency>
-	    <groupId>io.cucumber</groupId>
-	    <artifactId>cucumber-junit</artifactId>
-	    <version>5.6.0</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-	<dependency>
-	    <groupId>org.junit.jupiter</groupId>
-	    <artifactId>junit-jupiter-api</artifactId>
-	    <version>5.10.1</version>
-	    <scope>test</scope>
-	</dependency>
-	   <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine -->
-	<dependency>
-	    <groupId>org.junit.jupiter</groupId>
-	    <artifactId>junit-jupiter-engine</artifactId>
-	    <version>5.10.1</version>
-	    <scope>test</scope>
-	</dependency>
-    <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-runner -->
+    <!-- Selenium WebDriver -->
     <dependency>
-        <groupId>org.junit.platform</groupId>
-        <artifactId>junit-platform-runner</artifactId>
-        <version>1.10.1</version>
-        <scope>test</scope>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>${selenium.version}</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.junit.platform/junit-platform-launcher -->
+
+    <!-- WebDriverManager for automatic driver management -->
     <dependency>
-        <groupId>org.junit.platform</groupId>
-        <artifactId>junit-platform-launcher</artifactId>
-        <version>1.10.1</version>
-        <scope>test</scope>
+      <groupId>io.github.bonigarcia</groupId>
+      <artifactId>webdrivermanager</artifactId>
+      <version>5.6.3</version>
     </dependency>
-    <!-- https://mvnrepository.com/artifact/org.testng/testng -->
-	<dependency>
-	    <groupId>org.testng</groupId>
-	    <artifactId>testng</artifactId>
-	    <version>7.8.0</version>
-	    <scope>test</scope>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-	<dependency>
-	    <groupId>org.seleniumhq.selenium</groupId>
-	    <artifactId>selenium-java</artifactId>
-	    <version>4.15.0</version>
-	</dependency>
-	<!-- https://mvnrepository.com/artifact/log4j/log4j -->
-	<dependency>
-	    <groupId>log4j</groupId>
-	    <artifactId>log4j</artifactId>
-	    <version>1.2.17</version>
-	</dependency>
+
+    <!-- Cucumber BDD -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>${cucumber.version}</version>
+    </dependency>
+
+    <!-- TestNG -->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${testng.version}</version>
+    </dependency>
+
+    <!-- Rest Assured for API Testing -->
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>${rest-assured.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>json-schema-validator</artifactId>
+      <version>${rest-assured.version}</version>
+    </dependency>
+
+    <!-- JSON Processing -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.16.1</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.10.1</version>
+    </dependency>
+
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+
+    <!-- ExtentReports -->
+    <dependency>
+      <groupId>com.aventstack</groupId>
+      <artifactId>extentreports</artifactId>
+      <version>${extentreports.version}</version>
+    </dependency>
+
+    <!-- Allure Reporting -->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>${allure.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-rest-assured</artifactId>
+      <version>${allure.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-cucumber7-jvm</artifactId>
+      <version>${allure.version}</version>
+    </dependency>
+
+    <!-- Apache POI for Excel operations -->
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi</artifactId>
+      <version>5.2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.poi</groupId>
+      <artifactId>poi-ooxml</artifactId>
+      <version>5.2.5</version>
+    </dependency>
+
+    <!-- Apache Commons -->
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.14.0</version>
+    </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>2.15.1</version>
+    </dependency>
+
+    <!-- Owner for configuration management -->
+    <dependency>
+      <groupId>org.aeonbits.owner</groupId>
+      <artifactId>owner</artifactId>
+      <version>1.0.12</version>
+    </dependency>
+
+    <!-- AssertJ for fluent assertions -->
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.25.1</version>
+    </dependency>
+
+    <!-- Lombok to reduce boilerplate code -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.30</version>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
+
   <build>
-	<plugins>
-  		<plugin>
-        	<groupId>org.apache.maven.plugins</groupId>
-        	<artifactId>maven-surefire-plugin</artifactId>
-        	<version>3.1.2</version>
+    <plugins>
+      <!-- Maven Compiler Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.12.1</version>
         <configuration>
-        	<suiteXmlFiles>
-            	<suiteXmlFile>src/test/java/TestNG.xml</suiteXmlFile>
-          	</suiteXmlFiles>
+          <source>11</source>
+          <target>11</target>
         </configuration>
-    	</plugin>
-	</plugins>
+      </plugin>
+
+      <!-- Maven Surefire Plugin for TestNG execution -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.2.3</version>
+        <configuration>
+          <suiteXmlFiles>
+            <suiteXmlFile>src/test/resources/testng-suites/testng.xml</suiteXmlFile>
+          </suiteXmlFiles>
+        </configuration>
+      </plugin>
+
+      <!-- Allure Maven Plugin -->
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>2.12.0</version>
+        <configuration>
+          <reportVersion>${allure.version}</reportVersion>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>
